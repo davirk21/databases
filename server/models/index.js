@@ -27,7 +27,8 @@ module.exports = {
                        where roomName = ?';  
                        
                        
-       var roomid, userid;     
+       var roomid, userid; 
+           
        function sendmessage () {
         if (userid && roomid) {
           var completeQuery = 'insert into messages (user, room, message) values (?,?,?)';
