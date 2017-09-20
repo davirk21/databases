@@ -18,8 +18,18 @@ app.set('port', 3000);
 app.use(morgan('dev'));
 app.use(parser.json());
 
+app.use(function(req, res, next) {
+  res.header('Content-Type', 'application/json');
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'content-type, accept');
+  res.header('access-control-max-age', '10');
+  next();
+});
 // Set up our routes
 app.use('/classes', router);
+
+
 
 // Serve the client files
 app.use(express.static(__dirname + '/../client'));
